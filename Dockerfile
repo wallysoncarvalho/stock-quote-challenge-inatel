@@ -3,7 +3,7 @@ WORKDIR /application
 COPY src ./src
 COPY pom.xml ./
 RUN mvn clean package -DskipTests=true
-RUN java -Djarmode=layertools -jar target/stock-quote-manager-1.0.jar.jar extract
+RUN java -Djarmode=layertools -jar target/stock-quote-manager-1.0.jar extract
 
 FROM adoptopenjdk:11-jre-hotspot
 WORKDIR /application
