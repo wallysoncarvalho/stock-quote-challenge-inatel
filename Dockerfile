@@ -1,14 +1,9 @@
 FROM adoptopenjdk/maven-openjdk11 as builder
 WORKDIR /application
-
-ARG JAR_FILE=target/stock-quote-manager-1.0.jar
-COPY ${JAR_FILE} application.jar
-
 COPY src ./src
 COPY pom.xml ./
-# RUN mvn clean package -DskipTests=true
-RUN java -Djarmode=layertools -jar application.jar extract
-# target/stock-quote-manager-1.0.jar
+RUN mvn clean package -DskipTests=true
+RUN java -Djarmode=layertools -jar target/stock-quote-manager-1.0.jar.jar extract
 
 FROM adoptopenjdk:11-jre-hotspot
 WORKDIR /application
