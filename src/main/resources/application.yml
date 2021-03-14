@@ -1,0 +1,21 @@
+server:
+  port: ${STOCK_QUOTE_PORT:8081 }
+spring:
+  main:
+    banner-mode: 'OFF'
+  thymeleaf:
+    check-template-location: false
+  datasource:
+    hikari:
+      connection-test-query: SELECT 1
+    url: ${DB_URL:jdbc:mysql://localhost:3306/bootdb}
+    platform: mysql
+    username: ${DB_USER:root}
+    password: ${DB_PWD:root}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+
+stock-manager:
+  url: ${STOCK_MANAGER_URL:http://localhost:8080}
